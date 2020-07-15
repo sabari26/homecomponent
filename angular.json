@@ -11,8 +11,11 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-builders/custom-webpack:browser",
           "options": {
+            "customWebpackConfig": {
+              "path": "./custom-webpack.config.js"
+            },
             "outputPath": "dist/homecomponent",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -26,8 +29,13 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [
+              {
+                "input": "node_modules/document-register-element/build/document-register-element.js"
+              }
+            ]
           },
+
           "configurations": {
             "production": {
               "fileReplacements": [
@@ -120,6 +128,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "homecomponent"
 }
